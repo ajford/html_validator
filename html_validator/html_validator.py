@@ -105,7 +105,7 @@ class MissingHtmlFile(Exception):
         super(MissingHtmlFile, self).__init__(message)
 
 
-def validate(files, verbose=False):
+def validate(files, verbose=False, stacksize='512k'):
     """
     Validate a single or a list of HTML files.
     :param files: Either a single file path or a list of paths to validate.
@@ -122,7 +122,7 @@ def validate(files, verbose=False):
             raise MissingHtmlFile("Missing HTML file to test: " + filename)
 
     # build the command to execute
-    cmd = ["java", "-Xss512k", "-jar", '%s' % vnu_path] + files
+    cmd = ["java", "-Xss{}".format(stacksize), "-jar", '%s' % vnu_path] + files
     if verbose:
         print("Execute command:", " ".join(cmd))
 
