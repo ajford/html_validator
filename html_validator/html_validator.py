@@ -129,7 +129,7 @@ def validate(files, verbose=False, stacksize='512k'):
     # run the command to perform the validation
     try:
         # execute and get output
-        output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+        output = subprocess.Popen(" ".join(cmd), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
         if verbose:
             print("Command output:", str(output)[:256] + "...")
 
